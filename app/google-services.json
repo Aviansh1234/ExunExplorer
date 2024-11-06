@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "186356572435",
+    "project_id": "exun-explorer-c4dc9",
+    "storage_bucket": "exun-explorer-c4dc9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186356572435:android:e5c11b93bd304f6668bae6",
+        "android_client_info": {
+          "package_name": "com.example.explorer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhpw0SmRmh4Ns3YOCifeV__MZrO5eCh2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
