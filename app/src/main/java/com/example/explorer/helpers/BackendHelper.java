@@ -40,13 +40,13 @@ public class BackendHelper {
 
     public static List<GeoPoint> getLatLongs() throws IOException {
         ServerInterface serverInterface = retrofit.create(ServerInterface.class);
-        Call<List<Map<String,Double>>> call = serverInterface.getLocations();
-        Response<List<Map<String,Double>>>res =call.execute();
+        Call<List<Map<String,Object>>> call = serverInterface.getLocations();
+        Response<List<Map<String,Object>>>res = call.execute();
         if(res.isSuccessful()){
-            List<Map<String,Double>> arr = res.body();
+            List<Map<String,Object>> arr = res.body();
             List<GeoPoint>ans = new ArrayList<>();
-            for(Map<String,Double> mp : arr){
-                ans.add(new GeoPoint(mp.get("Latitude"),mp.get("Longitude")));
+            for(Map<String,Object> mp : arr){
+                ans.add(new GeoPoint((Double) mp.get("Latitude"),(Double)mp.get("Longitude")));
             }
             return ans;
         }
@@ -80,7 +80,7 @@ public class BackendHelper {
         data.put("Time",System.currentTimeMillis());
         data.put("Id",FirebaseAuth.getInstance().getCurrentUser().getUid());
         ServerInterface serverInterface = retrofit.create(ServerInterface.class);
-        Call<String> call = serverInterface.sendLocation(data);
+        Call<String> call = serverInterface.sendLocation((Double) data.get("Latitude"), (Double)data.get("Longitude"), (String)data.get("Id"));
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

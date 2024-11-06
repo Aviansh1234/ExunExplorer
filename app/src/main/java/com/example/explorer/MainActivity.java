@@ -54,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             try {
-                List<Overlay> l = map.getOverlays();
-                for (Overlay o : l) {
-                    map.getOverlays().remove(o);
-                }
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -66,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                             arr = BackendHelper.getLatLongs();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
+                        }
+                        List<Overlay> l = map.getOverlays();
+                        for (Overlay o : l) {
+                            map.getOverlays().remove(o);
                         }
                         for (GeoPoint home : arr) {
                             Marker startMarker = new Marker(map);

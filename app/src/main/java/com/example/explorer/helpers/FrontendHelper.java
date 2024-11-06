@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -23,6 +24,7 @@ public class FrontendHelper {
                 GeoPoint curr = new GeoPoint(location.getLatitude(), location.getLongitude());
                 try {
                     BackendHelper.sendLocation(curr);
+//                    Toast.makeText(context, "AHHHHHHHHHHHHH", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -35,6 +37,7 @@ public class FrontendHelper {
                 GeoPoint curr = new GeoPoint(location.getLatitude(), location.getLongitude());
                 try {
                     BackendHelper.sendLocation(curr);
+//                    Toast.makeText(context, "AHHHHHHHHHHHHH", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -45,6 +48,7 @@ public class FrontendHelper {
             return;
         }
         System.out.println("setting listener");
+        Toast.makeText(context, "AHHHHHHHHHHHHH", Toast.LENGTH_SHORT).show();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener2);
         if(locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)!=null) {

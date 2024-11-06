@@ -13,9 +13,9 @@ public interface ServerInterface {
     @GET("getHotelInfo")
     Call<List<String>> getHotelInfo(@Query("hotelId") String hotelId);
     @GET("getLocations")
-    Call<List<Map<String,Double>>> getLocations();
+    Call<List<Map<String,Object>>> getLocations();
     @GET("sendLocation")
-    Call<String> sendLocation(@Query("location") Map<String,Object> mp);
+    Call<String> sendLocation(@Query("latitude") double lat,@Query("longitude") double lon, @Query("id") String id);
     @GET("uploadImage")
-    Call<String>uploadImage(@Query("image") Map<String,Object>data);
+    Call<String>uploadImage();
 }
